@@ -1,0 +1,34 @@
+
+syntax = "proto3";
+
+package parthpower.runner.v1;
+
+option go_package = "github.com/parthpower/loonabot/cmd/runner/api;api";
+
+service Runner {
+    rpc Run(RunRequest) returns (RunResponse);
+    rpc Update(stream UpdateRequest) returns (stream UpdateResponse);
+}
+
+message RunRequest {
+    bool restart = 1;
+}
+
+message RunResponse {
+    string err = 1;
+}
+
+message UpdateRequest {
+    bytes buf = 1;
+    FileMd md = 2;
+}
+
+message UpdateResponse {
+    string err = 1;
+}
+
+message FileMd {
+    string name = 1;
+    repeated string args = 2;
+    string sha256 = 3;
+}

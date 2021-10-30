@@ -2,3 +2,7 @@ loonabot
 venv/
 .env
 __pycache__/
+client
+server
+repl
+repl.go
